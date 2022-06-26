@@ -1,0 +1,6 @@
+file = open("demo.txt", "a")
+file.write("Haha From Next Lecture")
+file = open("demo.txt", "w")
+file.write("Hello World ! I’m Prame from Thailandmy favorite subject is Computer Programming See ya !")
+file = open("demo.txt", "r")
+print(file.read())
