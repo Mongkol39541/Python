@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container my-2">
+    {% for message in get_flashed_messages() %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    {% endfor %}
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.name.label}}
+        {{form.name()}}
+        <!-- Boolean Field -->
+        <br>
+        {{form.isAccept()}}{{form.isAccept.label}}
+        <br>
+        {{form.gender.label}}{{form.gender()}}
+        <br>
+        {{form.skill.label}}{{form.skill(class="form-control")}}
+        <br>
+        {{form.address.label}}<br>
+        {{form.address(class="form-control")}}
+        <br>
+        {{form.submit(class="btn btn-success")}}
+    </form>
+    <hr>
+    {% if session['name'] %}
+        ชื่อของคุณ คือ <strong>{{session['name']}}</strong><br>
+        ยอมรับบริการหรือไม่ คือ <strong>{{session['isAccept']}}</strong><br>
+        เพศ คือ <strong>{{session['gender']}}</strong><br>
+        ทักษะความสามารถ คือ <strong>{{session['skill']}}</strong><br>
+        ที่อยู่ คือ <strong>{{session['address']}}</strong>
+    {% else %}
+        ไม่พบข้อมูล
+    {% endif %}
+</div>
+<script>
+    const btn = document.querySelector('.btn.btn-default');
+    btn.classList.remove('btn-default');
+    btn.classList.add('btn-success');
+    console.log(btn);
+</script>
+{% endblock %}
