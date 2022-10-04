@@ -1,20 +1,16 @@
 import cv2
-import win32com.client
 
 class TestModel_image2:
-    def detect(cap, classifier, number_of_testID, scaleFactor, minNeighbors, color, listCLF, list_nameModel):
+    def detect(cap, classifier, id_numbertrain, scale_factor, minNeighbors, color, clf, list_namemodel):
         gray = cv2.cvtColor(cap, cv2.COLOR_BGR2GRAY)
-        features = classifier.detectMultiScale(gray, scaleFactor, minNeighbors)
-        speaker = win32com.client.Dispatch("SAPI.SpVoice")
-        for (x, y, w, h) in features:
-            for k in range(number_of_testID):
-                id,con = listCLF[k].predict(gray[y:y+h, x:x+w])
+        features = classifier.detectMultiScale(gray, scale_factor, minNeighbors)
+        for (axis_x, axis_y, wide, high) in features:
+            for loop_pre in range(id_numbertrain):
+                _, con = clf[loop_pre].predict(gray[axis_y : axis_y + high, axis_x : axis_x + wide])
                 if con <= 100:
-                    cv2.rectangle(cap, (x, y), (x+w, y+h), color, 2)
-                    cv2.putText(cap, list_nameModel[k], (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
-                    cv2.putText(cap, str(int(con))+"%" ,(x, y+20+h), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
-                    if(cv2.waitKey(1) & 0xFF == ord('s')):
-                        speaker.Speak(list_nameModel[k])
+                    cv2.rectangle(cap, (axis_x, axis_y), (axis_x + wide, axis_y + high), color, 2)
+                    cv2.putText(cap, list_namemodel[loop_pre], (axis_x, axis_y - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+                    cv2.putText(cap, str(int(con)) + "%",(axis_x, axis_y + 20 + high), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
                 if (con < 100):
                     con = "{0}".format(round(100 - con))
                 else:
@@ -22,27 +18,27 @@ class TestModel_image2:
         return cap
 
 class TestModel_image:
-    def set_testmodel(face_Model, name_of_fileimage, number_of_testID):
-        face_Cascade = cv2.CascadeClassifier("data_Model/"+face_Model+".xml")
-        cap = cv2.imread("test_image/"+str(name_of_fileimage)+".jpg")
-        listID = []
-        listCLF = []
-        list_nameModel = []
-        for i in range(number_of_testID):
+    def set_testmodel(face_model, name_of_fileimage, id_numbertrain):
+        face_cascade = cv2.CascadeClassifier("data_Model/" + face_model + ".xml")
+        cap = cv2.imread("test_image/" + str(name_of_fileimage) + ".jpg")
+        list_id = []
+        list_clf = []
+        list_namemodel = []
+        for _ in range(id_numbertrain):
             readFile = str(input("ModelFile : "))
             name_model = str(input("Name of Model : "))
-            listID.append(readFile)
-            list_nameModel.append(name_model)
-        for j in range(number_of_testID):
+            list_id.append(readFile)
+            list_namemodel.append(name_model)
+        for loop_read in range(id_numbertrain):
             clf = cv2.face.LBPHFaceRecognizer_create()
-            clf.read("data_Model/"+listID[j]+".xml")
-            listCLF.append(clf)
-        TestModel_image2.detect(cap, face_Cascade, number_of_testID, 1.2, 5, (0,255,0), listCLF, list_nameModel)
+            clf.read("data_Model/"+list_id[loop_read] + ".xml")
+            list_clf.append(clf)
+        TestModel_image2.detect(cap, face_cascade, id_numbertrain, 1.2, 5, (0,255,0), list_clf, list_namemodel)
         cv2.imshow('frame', cap)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-#face_Model = input("Face of model : ")
+#face_model = input("Face of model : ")
 #name_of_fileimage = input("Name of Testimage : ")
-#number_of_testID = int(input("Number of Testmodel tested : "))
-#TestModel_image.set_testmodel(face_Model, name_of_fileimage, number_of_testID)
+#id_numbertrain = int(input("Number of Testmodel tested : "))
+#TestModel_image.set_testmodel(face_model, name_of_fileimage, id_numbertrain)

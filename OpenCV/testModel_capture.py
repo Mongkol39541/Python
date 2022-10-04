@@ -1,32 +1,31 @@
 import cv2
-import win32com.client
 
 class TestModel_capture3:
-    def detect(cap, classifier, number_of_testID, scaleFactor, minNeighbors, color, listCLF, list_nameModel):
+    def detect(cap, classifier, id_numbertrain, scale_factor, min_neighbors, color, clf, list_namemodel):
         gray = cv2.cvtColor(cap, cv2.COLOR_BGR2GRAY)
-        features = classifier.detectMultiScale(gray, scaleFactor, minNeighbors)
-        speaker = win32com.client.Dispatch("SAPI.SpVoice")
-        for (x, y, w, h) in features:
-            for k in range(number_of_testID):
-                id,con = listCLF[k].predict(gray[y:y+h, x:x+w])
-                if con <= 100:
-                    cv2.rectangle(cap, (x, y), (x+w, y+h), color, 2)
-                    cv2.putText(cap, list_nameModel[k], (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
-                    cv2.putText(cap, str(int(con))+"%" ,(x, y+20+h), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
-                    if(cv2.waitKey(1) & 0xFF == ord('s')):
-                        speaker.Speak(list_nameModel[k])
-                if (con < 100):
-                    con = "{0}".format(round(100 - con))
-                else:
-                    con = "{0}".format(round(100 - con))
+        features = classifier.detectMultiScale(gray, scale_factor, min_neighbors)
+        listcon = []
+        for (axis_x, axis_y, wide, high) in features:
+            for loop_pre in range(id_numbertrain):
+                _, con = clf[loop_pre].predict(gray[axis_y : axis_y + high, axis_x : axis_x + wide])
+                listcon.append(int(con))
+            arr = [listcon,list_namemodel]
+            con = max(listcon)
+            for loop_che in range(id_numbertrain):
+                if arr[0][loop_che] == con:
+                    nameModel = arr[1][loop_che]
+            if con <= 100:
+                cv2.rectangle(cap, (axis_x, axis_y), (axis_x + wide, axis_y + high), color, 2)
+                cv2.putText(cap, nameModel, (axis_x, axis_y - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+                cv2.putText(cap, str(int(con)) + "%", (axis_x, axis_y + 20 + high), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
         return cap
 
 class TestModel_capture2:
-    def red_clf(cap, face_Cascade, listCLF, number_of_testID, list_nameModel):
+    def red_clf(cap, face_cascade, clf, id_numbertrain, list_namemodel):
         while(cap.isOpened()):
             ret, frame = cap.read()
             if ret == True:
-                frame = TestModel_capture3.detect(cap, face_Cascade, number_of_testID, 1.2, 5, (0,255,0), listCLF, list_nameModel)
+                frame = TestModel_capture3.detect(frame, face_cascade, id_numbertrain, 1.2, 5, (0,255,0), clf, list_namemodel)
                 cv2.imshow('frame', frame)
                 if(cv2.waitKey(1) & 0xFF == ord('q')):
                     break
@@ -35,25 +34,25 @@ class TestModel_capture2:
         return cap
 
 class TestModel_capture:
-    def set_testmodel(face_Model, number_of_testID):
-        face_Cascade = cv2.CascadeClassifier("data_Model/"+face_Model+".xml")
+    def set_testmodel(face_model, id_numbertrain):
+        face_cascade = cv2.CascadeClassifier("data_Model/"+face_model+".xml")
         cap = cv2.VideoCapture(0)
-        listID = []
-        listCLF = []
-        list_nameModel = []
-        for i in range(number_of_testID):
+        list_id = []
+        list_clf = []
+        list_namemodel = []
+        for _ in range(id_numbertrain):
             readFile = str(input("ModelFile : "))
             name_model = str(input("Name of Model : "))
-            listID.append(readFile)
-            list_nameModel.append(name_model)
-        for j in range(number_of_testID):
+            list_id.append(readFile)
+            list_namemodel.append(name_model)
+        for list_read in range(id_numbertrain):
             clf = cv2.face.LBPHFaceRecognizer_create()
-            clf.read("data_Model/"+listID[j]+".xml")
-            listCLF.append(clf)
-        TestModel_capture2.red_clf(cap, face_Cascade, listCLF, number_of_testID, list_nameModel)
+            clf.read("data_Model/" + list_id[list_read] + ".xml")
+            list_clf.append(clf)
+        TestModel_capture2.red_clf(cap, face_cascade, list_clf, id_numbertrain, list_namemodel)
         cap.release()
         cv2.destroyAllWindows()
 
-#face_Model = input("Face of model : ")
-#number_of_testID = int(input("Number of Testmodel tested : "))
-#TestModel_capture.set_testmodel(face_Model, number_of_testID)
+#face_model = input("Face of model : ")
+#id_numbertrain = int(input("Number of Testmodel tested : "))
+#TestModel_capture.set_testmodel(face_model, id_numbertrain)
