@@ -26,6 +26,7 @@ def sumexpand(S, G, SG):
                 f[i] = S[i]
                 if f not in SG:
                     SG.append(f)
+                    print(SG)
     return SG
 
 def FindS(X, T):

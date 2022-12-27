@@ -8,7 +8,7 @@ import time
 from kNN_kdtree import kNN_kdtree
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-from matplotlib import cm, projections
+from matplotlib import cm
 
 MAX = 100
 t = np.zeros((MAX, MAX))
