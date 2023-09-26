@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-A = cv2.imread('bell.jpg')
+A = cv2.imread('coins.png')
+cv2.imshow('A',A)
 plt.imshow(A)
 
 tol = 30
