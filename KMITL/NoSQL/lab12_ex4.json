@@ -1,0 +1,20 @@
+[
+    {
+        "Breed": "Rottweiler",
+        "Size": ["Middle", "Large"],
+        "Color": ["Black", "Blacker"],
+        "Price": 3600
+      },
+      {
+        "Breed": "Shiba",
+        "Size": ["Small", "Middle", "Large"],
+        "Color": ["White", "Brown"],
+        "Price": 8900
+      },
+      {
+        "Breed": "Beagle",
+        "Size": "Small",
+        "Color": ["Brown", "Black"],
+        "Price": 5400
+      }
+]

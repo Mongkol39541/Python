@@ -1,0 +1,113 @@
+[
+    {
+        "InvID": "V001",
+        "InvDate": "20/05/62",
+        "CustomerID": "C40",
+        "Name": "Aye Mi",
+        "Tel": "+6693-908-5236",
+        "HouseID": 70,
+        "Road": "Rama II",
+        "City": "Bangkok",
+        "Product": [
+            {
+                "ProductID": "p001",
+                "Quantity": 1,
+                "ProductName": "iPhone",
+                "brandName": "Apple",
+                "Price": 45000
+            }, 
+            {
+                "ProductID": "p003",
+                "Quantity": 2,
+                "ProductName": "iPad",
+                "brandName": "Apple",
+                "Price": 22000
+            }
+        ]
+    }, 
+    {
+        "InvID": "V002",
+        "InvDate": "12/11/62",
+        "CustomerID": "C16",
+        "Name": "Takashi",
+        "Tel": "+6677-101-3758",
+        "HouseID": 482,
+        "Road": "Rama IV",
+        "City": "Bangkok",
+        "Product": [
+            {
+                "ProductID": "p002",
+                "Quantity": 1,
+                "ProductName": "Surface Pro",
+                "brandName": "Microsoft",
+                "Price": 38000
+            }
+        ]
+    }, 
+    {
+        "InvID": "V003",
+        "InvDate": "09/09/62",
+        "CustomerID": "C93",
+        "Name": "Somchai",
+        "Tel": "+6694-994-3456",
+        "HouseID": 567,
+        "Road": "Asia",
+        "City": "Phuket",
+        "Product": [
+            {
+                "ProductID": "p001",
+                "Quantity": 2,
+                "ProductName": "iPhone",
+                "brandName": "Apple",
+                "Price": 45000
+            }, 
+            {
+                "ProductID": "p002",
+                "Quantity": 3,
+                "ProductName": "iPad",
+                "brandName": "Apple",
+                "Price": 22000
+            }, 
+            {
+                "ProductID": "p004",
+                "Quantity": 1,
+                "ProductName": "Galaxy Tab",
+                "brandName": "Samsung",
+                "Price": 12000
+            }, 
+            {
+                "ProductID": "p003",
+                "Quantity": 2,
+                "ProductName": "iPad",
+                "brandName": "Apple",
+                "Price": 22000
+            }
+        ]
+    }, 
+    {
+        "InvID": "V004",
+        "InvDate": "17/08/61",
+        "CustomerID": "C56",
+        "Name": "Thana",
+        "Tel": "+6677-434-9761",
+        "HouseID": 12,
+        "Road": "Rama IX",
+        "City": "Bangkok",
+        "Product": [
+            {
+                "ProductID": "p002",
+                "Quantity": 3,
+                "ProductName": "iPad",
+                "brandName": "Apple",
+                "Price": 22000
+            }, 
+            {
+                "ProductID": "p004",
+                "Quantity": 1,
+                "ProductName": "Galaxy Tab",
+                "brandName": "Samsung",
+                "Price": 12000
+            }
+        ]
+    }
+]

@@ -1,0 +1,127 @@
+[
+    {
+        "ItemID": 1, 
+        "BillID": {
+            "BillID": 1, 
+            "CountryID": {
+                "CountryID": 1, 
+                "CName": "Thailand"
+            }, 
+            "YearID": {
+                "yearID": 2, 
+                "Year": 2000
+            }, 
+            "CustomerID": {
+                "CustID": 1,
+                "CustName": "Sara"
+            }, 
+            "Amount": 1100
+        }, 
+        "productID": {
+            "productID": 2, 
+            "ProName": "Pen", 
+            "ProPrice": 50
+        }, 
+        "ProdAmount": 2
+    }, 
+    {
+        "ItemID": 2, 
+        "BillID": {
+            "BillID": 1, 
+            "CountryID": {
+                "CountryID": 1, 
+                "CName": "Thailand"
+            }, 
+            "YearID": {
+                "yearID": 2, 
+                "Year": 2000
+            }, 
+            "CustomerID": {
+                "CustID": 1,
+                "CustName": "Sara"
+            }, 
+            "Amount": 1100
+        }, 
+        "productID": {
+            "productID": 1, 
+            "ProName": "Book", 
+            "ProPrice": 100
+        }, 
+        "ProdAmount": 5
+    }, 
+    {
+        "ItemID": 3, 
+        "BillID": {
+            "BillID": 1, 
+            "CountryID": {
+                "CountryID": 1, 
+                "CName": "Thailand"
+            }, 
+            "YearID": {
+                "yearID": 2, 
+                "Year": 2000
+            }, 
+            "CustomerID": {
+                "CustID": 1,
+                "CustName": "Sara"
+            }, 
+            "Amount": 1100
+        }, 
+        "productID": {
+            "productID": 4, 
+            "ProName": "Bag", 
+            "ProPrice": 500
+        }, 
+        "ProdAmount": 1
+    }, 
+    {
+        "ItemID": 4, 
+        "BillID": {
+            "BillID": 2, 
+            "CountryID": {
+                "CountryID": 2, 
+                "CName": "Japan"
+            }, 
+            "YearID": {
+                "yearID": 2, 
+                "Year": 2000
+            }, 
+            "CustomerID": {
+                "CustID": 2,
+                "CustName": "Alex"
+            }, 
+            "Amount": 900
+        }, 
+        "productID": {
+            "productID": 3, 
+            "ProName": "Shoe", 
+            "ProPrice": 200
+        }, 
+        "ProdAmount": 2
+    }, 
+    {
+        "ItemID": 5, 
+        "BillID": {
+            "BillID": 2, 
+            "CountryID": {
+                "CountryID": 2, 
+                "CName": "Japan"
+            }, 
+            "YearID": {
+                "yearID": 2, 
+                "Year": 2000
+            }, 
+            "CustomerID": {
+                "CustID": 2,
+                "CustName": "Alex"
+            }, 
+            "Amount": 900
+        }, 
+        "productID": {
+            "productID": 4, 
+            "ProName": "Bag", 
+            "ProPrice": 500
+        }, 
+        "ProdAmount": 1
+    }
+]

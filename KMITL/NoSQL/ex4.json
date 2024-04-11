@@ -1,0 +1,48 @@
+[
+    {
+        "Subject": {
+            "SubjectID": 1, 
+            "SubjectName": "เคมี"
+        }, 
+        "SecondarySchool": {
+            "SecondaryID": 4, 
+            "BookID": 1
+        }, 
+        "Author": [
+            "พงศธร นันทธเนศ", 
+            "พรพรหม ชัยฉัตรพรสุข", 
+            "สุนทร ภูรีปรีชาเลิศ", 
+            "ดร. ศิริศักดิ์ โลลุพิมาน"
+        ], 
+        "Cost": 94
+    }, 
+    {
+        "Subject": {
+            "SubjectID": 2, 
+            "SubjectName": "ชีววิทยา"
+        }, 
+        "SecondarySchool": {
+            "SecondaryID": 4, 
+            "BookID": 1
+        }, 
+        "Author": [
+            "ดร. ฤทธิ์ วัฒนชัยยิ่งเจริญ"
+        ], 
+        "Cost": 85
+    }, 
+    {
+        "Subject": {
+            "SubjectID": 3, 
+            "SubjectName": "ฟิสิกส์"
+        }, 
+        "SecondarySchool": {
+            "SecondaryID": 4, 
+            "BookID": 1
+        }, 
+        "Author": [
+            "ดร. สุโกสินทร์ ทองรัตนาศิริ", 
+            "ดร. มนต์อมร ปรีชารัตน์"
+        ], 
+        "Cost": 99
+    }
+]

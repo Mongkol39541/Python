@@ -1,0 +1,87 @@
+[
+    {
+        "FullName": "Harry Potter", 
+        "DateofBirth(DD/MM/YYYY)": "31/07/80", 
+        "Sex": "Male", 
+        "HomeAddress": [
+            "Godric's Hollow", 
+            "West Country", 
+            "England", 
+            "Great Britain"
+        ], 
+        "MobileNumber": [
+            "+66-451-9856", 
+            "+66-025-6314"
+        ], 
+        "Email": [
+            "harry.p@hogwarts.ac.th", 
+            "Harry99@gmail.com"
+        ], 
+        "Languages": [
+            {
+                "LanguagesName": "English", 
+                "AbilltyToRead": {
+                    "AbilltyID": 0, 
+                    "Read": "Very Good"
+                }, 
+                "AbilltyToWrite": {
+                    "AbilltyID": 0, 
+                    "Write": "Very Good"
+                }, 
+                "AbilltyToSpeak": {
+                    "AbilltyID": 0, 
+                    "Speak": "Very Good"
+                }
+            }, 
+            {
+                "LanguagesName": "China", 
+                "AbilltyToRead": {
+                    "AbilltyID": 2, 
+                    "Read": "Weak"
+                }, 
+                "AbilltyToWrite": {
+                    "AbilltyID": 2, 
+                    "Write": "Weak"
+                }, 
+                "AbilltyToSpeak": {
+                    "AbilltyID": 2, 
+                    "Speak": "Weak"
+                }
+            }, 
+            {
+                "LanguagesName": "Japan", 
+                "AbilltyToRead": {
+                    "AbilltyID": 0, 
+                    "Read": "Very Good"
+                }, 
+                "AbilltyToWrite": {
+                    "AbilltyID": 2, 
+                    "Write": "Weak"
+                }, 
+                "AbilltyToSpeak": {
+                    "AbilltyID": 1, 
+                    "Speak": "Good"
+                }
+            }
+        ], 
+        "EducationBackground": [
+            {
+                "Leval": "Bachelor Degree", 
+                "Year": 1997, 
+                "Institution": "Hogwarts School", 
+                "Major": "Auror", 
+                "DegreeObtained": "Bachelor of Wizard"
+            }, 
+            {
+                "Leval": "Master Degree", 
+                "Year": 2000, 
+                "Institution": "Durmstrang Institute", 
+                "Major": "Auror", 
+                "DegreeObtained": "Master of Wizard"
+            }, 
+            {
+                "Leval": "Doctoral Degree"
+            }
+        ]
+    }
+]

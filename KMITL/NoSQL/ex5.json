@@ -1,0 +1,18 @@
+[
+    {
+        "Name": "FalconWiz, Inc.", 
+        "Address": "FalconWiz, Inc. 12345 Brid Road Internet, ON, Canada LIC 455", 
+        "Invoice": "#: 123",
+        "Date": "2016-10-18",
+        "PaymentMethod": {
+                "PaymentName": "Credit"
+        },  
+        "Items": [
+            {
+                "ItemName": "Video Games", 
+                "Price": "59.99"
+            }
+        ], 
+        "TotalPrice": "59.99"
+    }
+]

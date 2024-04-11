@@ -1,0 +1,28 @@
+[
+    {
+        "Name": "SPARKSUITE", 
+        "Address": "Sparksuite, Inc. 12345 Sunny Road Sunnyville, TX 12345", 
+        "Invoice": "#: 123",
+        "Created": "January 1, 2015", 
+        "Date": "February 1, 2015",
+        "PaymentMethod": {
+            "PaymentName": "Check", 
+            "Check #": 1000
+        }, 
+        "Items": [
+            {
+                "ItemName": "Website design", 
+                "Price": "$300.00"
+            }, 
+            {
+                "ItemName": "Hosting (3 months)", 
+                "Price": "$75.00"
+            }, 
+            {
+                "ItemName": "Domain name (1 year)", 
+                "Price": "$10.00"
+            }
+        ], 
+        "TotalPrice": "$385.00"
+    }
+]
