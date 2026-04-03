@@ -181,17 +181,14 @@ project นี้ใช้เฉพาะ subject `SCI64` ซึ่งมี:
 ## ลำดับการใช้งาน
 
 ```
-1. summarize_subjects     ดูข้อมูลรวมทุก subject → ตัดสินใจเลือก subject + train_modules
+1. summarize_subjects     ดูข้อมูลรวมทุก subject → ยืนยัน hours + train_modules
          ↓
-2. prepare_dataset        แปลง Arrow → wav + manifest.json
+2. finetune               prepare (อัตโนมัติถ้ายังไม่มี) + train ทุกวิชาต่อเนื่อง
          ↓
-3. describe_dataset       ดูสถิติ + OOV analysis ของ subject ที่เลือก
-         ↓
-4. finetune               train โมเดล
-         ↓
-5. evaluate               เปรียบเทียบ WER/SER/DER/IER + บันทึก CSV
+3. evaluate               เปรียบเทียบ WER/SER/DER/IER + บันทึก CSV
 ```
 
+> `prepare_dataset.sh` และ `describe_dataset.sh` ใช้ถ้าต้องการดู/เตรียม dataset ของวิชาใดวิชาหนึ่งแยกก่อน
 > `create_manifest.sh` ใช้เฉพาะกรณีต้องการ regenerate manifest โดยไม่ extract wav ใหม่
 
 ---
@@ -396,18 +393,46 @@ python scripts/create_manifest.py \
 bash finetune.sh
 ```
 
-**ตัวอย่างการรันโดยตรง:**
+script จะ loop ทุก subject ต่อเนื่องอัตโนมัติ:
+- ถ้า manifest ยังไม่มี → `prepare_dataset` ให้ก่อน
+- ใช้ `--train_modules` ที่เหมาะสมของแต่ละวิชา
+- แยก checkpoint ต่าง subject: `checkpoint/{SUBJECT}/`
+
+**subject และ train_modules ที่ใช้:**
+
+| Subject | วิชา | train_modules | เหตุผล |
+|---|---|---|---|
+| ENG64 | ภาษาอังกฤษ | `encoder,decoder,joint` | ครูออกเสียงอังกฤษปน → acoustic ต่าง |
+| SCI64 | วิทยาศาสตร์ | `decoder,joint` | loanword วิทย์ OOV สูง |
+| SCT64 | วิทย์เทคโนโลยี | `decoder,joint` | คล้าย SCI64 |
+| MAT64 | คณิตศาสตร์ | `decoder,joint` | ตัวเลข/สมการ pattern ต่าง |
+| HIS64 | ประวัติศาสตร์ | `decoder,joint` | proper noun เยอะ |
+| SOC64 | สังคมศึกษา | `decoder,joint` | ชื่อประเทศ ภูมิศาสตร์ |
+| OCC64 | การงานอาชีพ | `decoder,joint` | คำเทคนิคเฉพาะสาขา |
+| HEA64 | สุขศึกษา | `decoder` | ศัพท์สุขภาพ ไม่ซับซ้อนมาก |
+| THA64 | ภาษาไทย | `decoder` | acoustic ปกติ แค่ปรับ language pattern |
+| ART64 | ศิลปะ | `decoder` | vocabulary ทั่วไป dataset เล็กสุด |
+
+**ปรับค่าได้ใน `finetune.sh`:**
 
 ```bash
-python scripts/finetune.py \
-    --model_name     /project/.../typhoon-asr-realtime.nemo \
-    --train_manifest datasets/SCI64/train/manifest.json \
-    --val_manifest   datasets/SCI64/validation/manifest.json \
-    --data_dir       checkpoint \
-    --epochs         50 \
-    --batch_size     8 \
-    --lr             1e-4 \
-    --train_modules  decoder
+EPOCHS=50
+BATCH_SIZE=8
+LR=1e-4
+```
+
+ถ้าต้องการ train แค่บางวิชา ตัดออกจาก array `SUBJECTS`:
+```bash
+SUBJECTS=("SCI64" "MAT64" "ENG64")
+```
+
+**โครงสร้าง checkpoint หลังรันครบ:**
+```
+checkpoint/
+├── ENG64/experiments/thai-finetune-ENG64/.../thai-finetune-ENG64_final.nemo
+├── SCI64/experiments/thai-finetune-SCI64/.../thai-finetune-SCI64_final.nemo
+├── MAT64/...
+└── ...
 ```
 
 **Arguments สำคัญ:**
